@@ -1,0 +1,65 @@
+<project name="ZAP-7" basedir="/home/vikas/workspace/ZAP-7/" default="run">
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="project_name" value="ZAP" />
+	<property name="dist.dir" value="dist">
+	</property>
+	<property name="lib.dir" value="lib">
+	</property>
+
+	<path id="master-classpath">
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="build">
+			<include name="**/*.class" />
+		</fileset>
+
+	</path>
+
+	<path id="master-classpath">
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="build">
+			<include name="**/*.class" />
+		</fileset>
+	</path>
+
+	<target name="build" description="Compile source tree java files" depends="clean">
+		<mkdir dir="${build.dir}" />
+		<javac destdir="${build.dir}">
+			<src path="${src.dir}" />
+			<classpath refid="master-classpath" />
+		</javac>
+	</target>
+
+	<target name="clean" description="Clean output directories">
+		<delete>
+			<fileset dir="${build.dir}">
+				<include name="**/*.class" />
+			</fileset>
+
+			<fileset dir="${dist.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+
+		</delete>
+	</target>
+
+	<target name="build-jar" depends="build">
+		<jar destfile="${dist.dir}/${project_name}.jar" basedir="${build.dir}" includes="**/*.class">
+			<manifest>
+				<attribute name="Main-Class" value="com.zap.main.Zap" />
+			</manifest>
+			<zipgroupfileset dir="${lib.dir}" includes="**/*.jar" />
+		</jar>
+
+	</target>
+
+	<target name="run" depends="build-jar">
+		<java jar="${dist.dir}/${project_name}.jar" fork="true" />
+	</target>
+
+
+</project>

@@ -1,8 +1,14 @@
-# Java-OWASP-ZAP-Web-Application-Security-Testing-Automation
-- Automate web application security testing using Java and OWASP ZAP
+package com.zap.zapsessionmgmt;
 
-## OWASP ZAP Session manager code snippet
-```Java
+import java.io.IOException;
+import java.util.List;
+
+import org.zaproxy.clientapi.core.Alert;
+import org.zaproxy.clientapi.core.ClientApiException;
+
+import com.zap.input.ReadConfig;
+import com.zap.main.Zap;
+
 public class ZapSessionManager {
 
 	public Process startZapProcess() throws IOException, InterruptedException {
@@ -118,12 +124,3 @@ public class ZapSessionManager {
 		System.out.println("Total alerts:"+alerts.size());
 	}
 }
-```
-## Get Started
-1. Clone this repo
-2. Download required dependencies and copy them to `lib` directory
-3. Update `input\config.xml` file
-4. Execute test cases using `ant run`
-
-## Author
-[Vikas Sanap](https://www.linkedin.com/in/vikassanap/)

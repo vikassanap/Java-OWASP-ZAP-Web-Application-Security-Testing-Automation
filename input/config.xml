@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<security-app>
+	<defaultDriver>Firefox</defaultDriver>
+	<projectName>TestApp</projectName>
+	<serverUrl>http://10.71.71.194:8081/Zap/</serverUrl>
+	<zapDir>/home/vikas/workspace/ZAP_2.2.2/</zapDir>
+	<tomcatDir>/var/lib/tomcat7/webapps/Zap/</tomcatDir>
+	<historyDir>/home/vikas/workspace/ZAP-7/historyFiles/</historyDir>
+	<urlsToScan>
+		<urlScan>http://localhost:9090</urlScan>
+	</urlsToScan>
+
+	<reportDir>/home/vikas/workspace/ZAP-7/output/</reportDir>
+
+	<proxy>
+		<host>127.0.0.1</host>
+		<port>8080</port>
+	</proxy>
+	<mail>
+		<tomail>
+			<users>
+				<email>user@mail.com</email>
+			</users>
+			<users>
+				<email>user1@mail.com</email>
+			</users>
+		</tomail>
+
+		<frommail>
+			<user>
+				<email>usermail@mail.com</email>
+				<password>password</password>
+			</user>
+		</frommail>
+		<smtp>
+			<host>smtp.gmail.com</host>
+			<port>465</port>
+			<auth>true</auth>
+		</smtp>
+	</mail>
+
+	<alertManage>
+		<ignoreFlag flag="2" > </ignoreFlag>
+		<ignoreFilterList>
+			<ignoreFilter reliability="Warning" risk="Low"></ignoreFilter>
+			<ignoreFilter reliability="Warning" risk="Informational"></ignoreFilter>
+		</ignoreFilterList>
+		<ignoreList>
+			<ignoreAlert alert="X-Content-Type-Options header missing"
+				relaibility="Warning" risk="Low" />
+			<ignoreAlert alert="Password Autocomplete in browser"
+				relaibility="Warning" risk="Low" />
+			<ignoreAlert alert="X-Frame-Options header not set"
+				relaibility="Warning" risk="Informational" />
+			<ignoreAlert alert="X-Content-Type-Options header missing"
+				relaibility="Warning" risk="Low" />
+		</ignoreList>
+	</alertManage>
+
+</security-app>
